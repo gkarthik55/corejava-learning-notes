@@ -1,46 +1,24 @@
 package com.learning.corejava02.oopsconcepts;
 
-class Customer4
+class OrderService
 {
-    private int customerId;
-    private String name;
-
-    public Customer4(int customerId, String name)
+    // Overloaded method 1: Place order using product ID and quantity
+    public void placeOrder(String productId, int quantity)
     {
-        this.customerId = customerId;
-        this.name = name;
+        System.out.println("Order placed for Product ID: " + productId + ", Quantity: " + quantity);
     }
 
-    public String getName()
+    // Overloaded method 2: Place order with discount code
+    public void placeOrder(String productId, int quantity, String discountCode)
     {
-        return name;
+        System.out.println("Order placed for Product ID: " + productId + ", Quantity: " + quantity + ", Discount Code: " + discountCode);
     }
 
-    public int getCustomerId()
+    // Overloaded method 3: Place order with different shipping address
+    public void placeOrder(String productId, int quantity, String discountCode, String shippingAddress)
     {
-        return customerId;
-    }
-}
-
-// Real-world class to demonstrate Method Overloading
-class CustomerTransactionService
-{
-    // Overloaded method: Deposit into savings account
-    public String processTransaction(Customer4 customer, double amount)
-    {
-        return "Deposited ₹" + amount + " to savings account of customer: " + customer.getName();
-    }
-
-    // Overloaded method: Deposit into specific account type
-    public String processTransaction(Customer4 customer, double amount, String accountType)
-    {
-        return "Deposited ₹" + amount + " to " + accountType + " account of customer: " + customer.getName();
-    }
-
-    // Overloaded method: Transfer between accounts
-    public String processTransaction(Customer4 fromCustomer, Customer4 toCustomer, double amount)
-    {
-        return "Transferred ₹" + amount + " from " + fromCustomer.getName() + " to " + toCustomer.getName();
+        System.out.println("Order placed for Product ID: " + productId + ", Quantity: " + quantity +
+                           ", Discount Code: " + discountCode + ", Shipping Address: " + shippingAddress);
     }
 }
 
@@ -48,13 +26,10 @@ public class JavaExample_27_MethodOverloading
 {
     public static void main(String[] args)
     {
-        CustomerTransactionService transactionService = new CustomerTransactionService();
+    	 OrderService orderService = new OrderService();
 
-        Customer4 cust1 = new Customer4(101, "Ravi Kumar");
-        Customer4 cust2 = new Customer4(102, "Anita Sharma");
-
-        System.out.println(transactionService.processTransaction(cust1, 5000.0));
-        System.out.println(transactionService.processTransaction(cust2, 12000.0, "current"));
-        System.out.println(transactionService.processTransaction(cust1, cust2, 2500.0));
+         orderService.placeOrder("P1001", 2);
+         orderService.placeOrder("P1002", 1, "SAVE10");
+         orderService.placeOrder("P1003", 3, "NEW50", "No. 12, MG Road, Bengaluru");
     }
 }

@@ -1,49 +1,48 @@
 package com.learning.corejava02.oopsconcepts;
 
-// Base class
-class Customer5
+class Notification
 {
-    protected String name;
+    protected String recipient;
 
-    public Customer5(String name)
+    public Notification(String recipient)
     {
-        this.name = name;
+        this.recipient = recipient;
     }
 
-    protected double getDiscount()
+    // Base version of the method
+    public void sendNotification()
     {
-        return 5.0; // Base discount
-    }
-
-    protected void getCustomerType()
-    {
-        System.out.println("Regular Customer");
+        System.out.println("Sending a general notification to: " + recipient);
     }
 }
 
-// Derived class
-class PremiumCustomer1 extends Customer5
+class EmailNotification extends Notification
 {
-    public PremiumCustomer1(String name)
+    public EmailNotification(String recipient)
     {
-        super(name);
+        super(recipient);
     }
 
+    // Overridden method
     @Override
-    protected double getDiscount()
+    public void sendNotification()
     {
-        return 15.0; // Overridden discount
+        System.out.println("Sending EMAIL notification to " + recipient);
+    }
+}
+
+class SMSNotification extends Notification
+{
+    public SMSNotification(String recipient)
+    {
+        super(recipient);
     }
 
+    // Overridden method
     @Override
-    protected void getCustomerType()
+    public void sendNotification()
     {
-        System.out.println("Premium Customer");
-    }
-
-    protected void getLoyaltyPoints()
-    {
-        System.out.println("Loyalty Points: 200");
+        System.out.println("Sending SMS notification to " + recipient);
     }
 }
 
@@ -51,11 +50,12 @@ public class JavaExample_28_MethodOverriding
 {
     public static void main(String[] args)
     {
-        Customer5 customer = new PremiumCustomer1("Karthik");
+        Notification n1 = new Notification("GenericUser");
+        Notification n2 = new EmailNotification("karthik@example.com");
+        Notification n3 = new SMSNotification("9876543210");
 
-        customer.getCustomerType();           // Calls overridden method
-        System.out.println("Discount: " + customer.getDiscount() + "%");
-
-        // customer.getLoyaltyPoints(); // Not accessible through base reference
+        n1.sendNotification();  // Base version
+        n2.sendNotification();  // Overridden version (Email)
+        n3.sendNotification();  // Overridden version (SMS)
     }
 }

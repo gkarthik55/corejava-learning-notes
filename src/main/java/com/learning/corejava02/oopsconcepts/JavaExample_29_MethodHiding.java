@@ -1,38 +1,18 @@
 package com.learning.corejava02.oopsconcepts;
 
-/*
- * Java program to show that if a static method is redefined by
- * a derived class, then it is not overriding, it is hiding.
- */
-
-class Customer6
+class Report
 {
-    // Static method in base class – this will be hidden, not overridden
-    static void showPolicy()
+    public static void generate()
     {
-        System.out.println("Customer6 Policy: Basic terms apply.");
-    }
-
-    // Non-static method – this will be overridden
-    void generateInvoice()
-    {
-        System.out.println("Generating invoice for regular customer.");
+        System.out.println("Generating general report...");
     }
 }
 
-class CorporateCustomer1 extends Customer6
+class SalesReport extends Report
 {
-    // Hides static method in Customer6
-    static void showPolicy()
+    public static void generate()
     {
-        System.out.println("Corporate Policy: Bulk discount applied.");
-    }
-
-    // Overrides generateInvoice()
-    @Override
-    void generateInvoice()
-    {
-        System.out.println("Generating invoice for corporate customer.");
+        System.out.println("Generating sales report...");
     }
 }
 
@@ -40,12 +20,12 @@ public class JavaExample_29_MethodHiding
 {
     public static void main(String[] args)
     {
-    	CorporateCustomer1 obj = new CorporateCustomer1();
+    	Report report1 = new Report();
+        Report report2 = new SalesReport(); // Note: reference is of type Report
+        SalesReport report3 = new SalesReport();
 
-        // Static method call – method hiding, not overriding
-        obj.showPolicy();  // Calls CorporateCustomer.showPolicy()
-
-        // Instance method call – proper overriding
-        obj.generateInvoice();  // Calls CorporateCustomer.generateInvoice()
+        report1.generate();  // General report
+        report2.generate();  // General report - method hiding in action
+        report3.generate();  // Sales report
     }
 }

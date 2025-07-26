@@ -1,44 +1,27 @@
 package com.learning.corejava02.oopsconcepts;
 
-// Interface representing a customer's billing behavior
-interface Billable
+//Interface defining the shipping contract
+interface ShippingService
 {
-    double calculateBill();
+ void shipOrder(String orderId, String address);
 }
 
-// Online customer with GST applied
-class OnlineCustomer implements Billable
+//Standard shipping implementation
+class StandardShipping implements ShippingService
 {
-    private double purchaseAmount;
-    private static final double GST_RATE = 0.18;
-
-    public OnlineCustomer(double purchaseAmount)
-    {
-        this.purchaseAmount = purchaseAmount;
-    }
-
-    @Override
-    public double calculateBill()
-    {
-        return purchaseAmount + (purchaseAmount * GST_RATE);
-    }
+ @Override
+ public void shipOrder(String orderId, String address)
+ {
+     System.out.println("Standard Shipping for Order: " + orderId + " to " + address);
+ }
 }
 
-// Walk-in customer with no GST, but discount may apply
-class WalkInCustomer implements Billable
+class ExpressShipping implements ShippingService
 {
-    private double purchaseAmount;
-    private static final double DISCOUNT = 50.0;
-
-    public WalkInCustomer(double purchaseAmount)
-    {
-        this.purchaseAmount = purchaseAmount;
-    }
-
     @Override
-    public double calculateBill()
+    public void shipOrder(String orderId, String address)
     {
-        return purchaseAmount - DISCOUNT;
+        System.out.println("Express Shipping for Order: " + orderId + " to " + address);
     }
 }
 
@@ -46,10 +29,10 @@ public class JavaExample_21_InterfaceExample
 {
     public static void main(String[] args)
     {
-        Billable customer1 = new OnlineCustomer(1000);
-        System.out.println("Online Customer Final Bill: ₹" + customer1.calculateBill());
+    	ShippingService shipping1 = new StandardShipping();
+        ShippingService shipping2 = new ExpressShipping();
 
-        Billable customer2 = new WalkInCustomer(1000);
-        System.out.println("Walk-in Customer Final Bill: ₹" + customer2.calculateBill());
+        shipping1.shipOrder("ORD12345", "Bengaluru, Karnataka");
+        shipping2.shipOrder("ORD12346", "Hyderabad, Telangana");
     }
 }

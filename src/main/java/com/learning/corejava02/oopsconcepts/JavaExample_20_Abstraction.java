@@ -1,102 +1,72 @@
 package com.learning.corejava02.oopsconcepts;
 
-// Abstract class representing a generic bank account
-abstract class Account
+//Abstract class defining the blueprint for all payments
+abstract class Payment
 {
-    private String accountHolder;
+	private double amount;
+	private String transactionId;
 
-    // Constructor of abstract class
-    public Account(String accountHolder)
-    {
-        System.out.println("Account constructor called");
-        this.accountHolder = accountHolder;
-    }
+	public Payment(double amount, String transactionId)
+	{
+		this.amount = amount;
+		this.transactionId = transactionId;
+	}
 
-    // Abstract method to calculate balance after interest
-    public abstract double calculateAnnualInterest();
+	// Abstract method - must be implemented by all concrete payment types
+	public abstract void pay();
 
-    public abstract String toString();
-
-    // Concrete method
-    public String getAccountHolder()
-    {
-        return accountHolder;
-    }
+	// Common logic available to all subclasses
+	public void printReceipt()
+	{
+		System.out.println("Receipt Generated:");
+		System.out.println("Transaction ID: " + transactionId);
+		System.out.println("Amount Paid: ₹" + amount);
+	}
 }
 
-// Concrete subclass representing a Savings Account
-class SavingsAccount extends Account
+//Concrete implementation for Credit Card payment
+class CreditCardPayment extends Payment
 {
-    private double balance;
-    private double interestRate;
+	private String cardNumber;
 
-    public SavingsAccount(String accountHolder, double balance, double interestRate)
-    {
-        super(accountHolder);
-        this.balance = balance;
-        this.interestRate = interestRate;
-        System.out.println("SavingsAccount constructor called");
-    }
+	public CreditCardPayment(double amount, String transactionId, String cardNumber) {
+		super(amount, transactionId);
+		this.cardNumber = cardNumber;
+	}
 
-    @Override
-    public double calculateAnnualInterest()
-    {
-        return balance * interestRate;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "SavingsAccount of " + getAccountHolder() + " with interest: " + calculateAnnualInterest();
-    }
+	@Override
+	public void pay() {
+		System.out.println("Processing credit card payment using card: " + cardNumber);
+		printReceipt();
+	}
 }
 
-// Concrete subclass representing a Fixed Deposit Account
-class FixedDepositAccount extends Account
-{
-    private double principal;
-    private double rate;
-    private int years;
+//Concrete implementation for UPI payment
+class UpiPayment extends Payment {
+	private String upiId;
 
-    public FixedDepositAccount(String accountHolder, double principal, double rate, int years)
-    {
-        super(accountHolder);
-        this.principal = principal;
-        this.rate = rate;
-        this.years = years;
-        System.out.println("FixedDepositAccount constructor called");
-    }
+	public UpiPayment(double amount, String transactionId, String upiId) {
+		super(amount, transactionId);
+		this.upiId = upiId;
+	}
 
-    @Override
-    public double calculateAnnualInterest()
-    {
-        return principal * rate * years;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "FixedDepositAccount of " + getAccountHolder() + " with total interest: " + calculateAnnualInterest();
-    }
+	@Override
+	public void pay() {
+		System.out.println("Processing UPI payment via: " + upiId);
+		// Simulate payment logic here
+		printReceipt();
+	}
 }
 
 public class JavaExample_20_Abstraction
 {
-    // Consider a real-life example of a man using an ATM machine.
-    // The man knows how to withdraw money or check balance, 
-    // but doesn't know the internal logic of how it communicates 
-    // with the bank's server or processes the transaction.
-    // This is abstraction — showing only essential details and hiding the complexity.
+	public static void main(String[] args)
+	{
+		Payment payment1 = new CreditCardPayment(1500.00, "TXN12345", "4111-XXXX-XXXX-1234");
+		Payment payment2 = new UpiPayment(899.50, "TXN12346", "kavya@upi");
 
-    // In Java, abstraction is achieved using interfaces and abstract classes.
-    // 100% abstraction can be achieved using interfaces.
-
-    public static void main(String[] args)
-    {
-        Account acc1 = new SavingsAccount("Karthik", 10000, 0.05);
-        Account acc2 = new FixedDepositAccount("Akanksha", 20000, 0.06, 3);
-
-        System.out.println(acc1.toString());
-        System.out.println(acc2.toString());
-    }
+		payment1.pay();
+		System.out.println();
+		payment2.pay();
+	}
 }
