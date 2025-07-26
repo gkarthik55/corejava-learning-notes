@@ -62,7 +62,7 @@ class MyEmergencyPatient implements MyPatient
 	}
 }
 
-public class JavaExample_22_InterfaceExample_RealTime
+public class JavaExample_22_InterfaceExample_Interview
 {
 	public static void main(String[] args) 
 	{

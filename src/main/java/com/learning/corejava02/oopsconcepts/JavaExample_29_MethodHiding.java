@@ -21,11 +21,11 @@ public class JavaExample_29_MethodHiding
     public static void main(String[] args)
     {
     	Report report1 = new Report();
-        Report report2 = new SalesReport(); // Note: reference is of type Report
+        Report report2 = new SalesReport(); // Note: Reference is of type Report
         SalesReport report3 = new SalesReport();
 
         report1.generate();  // General report
-        report2.generate();  // General report - method hiding in action
+        report2.generate();  // General report - Method hiding in action 
         report3.generate();  // Sales report
     }
 }

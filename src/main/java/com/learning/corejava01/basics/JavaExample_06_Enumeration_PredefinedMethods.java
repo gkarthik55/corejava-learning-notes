@@ -10,7 +10,7 @@ public class JavaExample_06_Enumeration_PredefinedMethods
 {
 	public static void main(String[] args)
 	{
-		// Calling values() 
+		// Calling values() method
 		Colors colors[] = Colors.values(); 
 		
 		// Looping through the Enum values.

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 enum Payment
 {
+	//CASH, DEBIT, UPI;
+	
 	CASH("The payment is made through Cash."),
 	DEBIT("The payment is made through Debit Card."),
 	UPI("The payment is made through UPI payment.");

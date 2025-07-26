@@ -45,7 +45,7 @@ public class JavaExample_03_JavaDatatypes
 		// Type mismatch: cannot convert from double to float
 		float f = 4.7333434f;
 		
-		long l = 9435423;
+		long l = 94354231176524l;
 
 		System.out.println("char: " + c);
 		System.out.println("integer: " + i);

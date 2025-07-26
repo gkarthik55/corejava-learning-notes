@@ -31,7 +31,8 @@ public class JavaExample_13_NestedSwitch
                 System.out.println("Eligible services: Basic Support, Email Support");
                 break;
             case 2:
-                switch (region) { // nested switch
+                switch (region) 
+                { // nested switch
                     case "NORTH":
                     case "EAST":
                         System.out.println("Eligible services: Priority Support, Dedicated Manager");

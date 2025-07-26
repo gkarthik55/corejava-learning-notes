@@ -8,7 +8,7 @@ public class JavaExample_04_Enumeration
     // Enum declaration can be done outside the Class or inside a Class but not inside a Method.
     enum OrderStatus
     {
-        NEW, PROCESSING, SHIPPED, DELIVERED;
+        NEW, PROCESSING, SHIPPED, DELIVERED; // Think of Amazon shopping website.
     }
 
     /* Internally above enum OrderStatus is converted to

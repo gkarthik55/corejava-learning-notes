@@ -50,8 +50,10 @@ public class JavaExample_7_MultiThreading_InterThreadCommunication
 	{
 		System.out.println("Begin of Main Thread");
 
-		final CustomerBankAccount cust1 = new CustomerBankAccount("Karthik", 10000);
+		// Same here also.. Customer Bank Account one object erbeku.. 
+		final CustomerBankAccount cust1 = new CustomerBankAccount("Karthik", 10000); 
 
+		// 2 Threads.. 1 Withdraw 1 Deposit
 		Thread t1 = new Thread("Withdraw-Thread")
 		{
 			public void run()

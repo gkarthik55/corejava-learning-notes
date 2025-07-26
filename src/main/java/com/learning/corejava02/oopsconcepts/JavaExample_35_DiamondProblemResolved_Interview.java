@@ -41,7 +41,7 @@ class AlertService implements EmailSender, SMSSender
     }
 }
 
-public class JavaExample_35_DiamondProblemResolved_DefaultMethods
+public class JavaExample_35_DiamondProblemResolved_Interview
 {
     public static void main(String[] args)
     {

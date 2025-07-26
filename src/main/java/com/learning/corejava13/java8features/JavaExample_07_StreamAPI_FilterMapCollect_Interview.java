@@ -8,9 +8,9 @@ class Product
 {
 	int id;
 	String name;
-	float price;
+	int price;
 
-	public Product(int id, String name, float price)
+	public Product(int id, String name, int price)
 	{
 		this.id = id;
 		this.name = name;
@@ -24,20 +24,20 @@ class Product
 	}
 }
 
-public class JavaExample_07_StreamAPI_FilterMapCollect_Laptop
+public class JavaExample_07_StreamAPI_FilterMapCollect_Interview
 {
 	public static void main(String[] args)
 	{
 		List<Product> productsList = new ArrayList<Product>();
 
 		// Adding Products
-		productsList.add(new Product(1, "HP Laptop", 25000f));
-		productsList.add(new Product(2, "Dell Laptop", 30000f));
-		productsList.add(new Product(3, "Lenevo Laptop", 28000f));
-		productsList.add(new Product(4, "Sony Laptop", 28000f));
-		productsList.add(new Product(5, "Apple Laptop", 90000f));
+		productsList.add(new Product(1, "HP Laptop", 25000));
+		productsList.add(new Product(2, "Dell Laptop", 30000));
+		productsList.add(new Product(3, "Lenevo Laptop", 28000));
+		productsList.add(new Product(4, "Sony Laptop", 28000));
+		productsList.add(new Product(5, "Apple Laptop", 90000));
 
-		List<Float> productPriceList2 = 
+		List<Integer> productPriceList2 = 
 				productsList
 				.stream()
 				.filter(p -> p.price >= 30000)	// filtering data
@@ -50,7 +50,7 @@ public class JavaExample_07_StreamAPI_FilterMapCollect_Laptop
 				productsList
 				.stream()
 				.filter(p -> p.price > 50000)	// filtering data
-				.map(p -> p)					// fetching price
+				.map(p -> p)					// fetching data
 				.collect(Collectors.toList());  // collecting as list
 
 		System.out.println(newProductList.toString());

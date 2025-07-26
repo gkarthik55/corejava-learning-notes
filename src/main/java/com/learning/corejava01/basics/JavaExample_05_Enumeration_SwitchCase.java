@@ -2,6 +2,7 @@ package com.learning.corejava01.basics;
 
 import java.util.Scanner;
 
+//Outside the Class.
 enum Workday
 {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
@@ -9,15 +10,8 @@ enum Workday
 
 class EmployeeWorkdayMood
 {
-    Workday day;
-
-    public EmployeeWorkdayMood(Workday day)
-    {
-        this.day = day;
-    }
-
     // Prints a line about Workday using switch
-    public void evaluateMood()
+    public void evaluateMood(Workday day)
     {
         switch (day)
         {
@@ -46,10 +40,12 @@ public class JavaExample_05_Enumeration_SwitchCase
 
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-
+        
         // Using the valueOf() method of Enum
-        EmployeeWorkdayMood mood = new EmployeeWorkdayMood(Workday.valueOf(input.toUpperCase()));
-        mood.evaluateMood();
+        Workday day = Workday.valueOf(input.toUpperCase());
+        
+        EmployeeWorkdayMood mood = new EmployeeWorkdayMood();
+        mood.evaluateMood(day);
 
         sc.close();
     }

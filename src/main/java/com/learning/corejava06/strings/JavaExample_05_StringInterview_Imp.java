@@ -22,7 +22,7 @@ public class JavaExample_05_StringInterview_Imp
 			
 			if(Character.isDigit(ch))
 			{
-				number = number + ch;
+				number = number + ch; // String Concat 
 			}
 			else
 			{

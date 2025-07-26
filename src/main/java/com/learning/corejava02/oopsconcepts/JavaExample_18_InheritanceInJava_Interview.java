@@ -99,7 +99,7 @@ class EmergencyPatient extends Patient
     }
 }
 
-public class JavaExample_18_InheritanceInJava_RealTime
+public class JavaExample_18_InheritanceInJava_Interview
 {
     public static void main(String[] args)
     {

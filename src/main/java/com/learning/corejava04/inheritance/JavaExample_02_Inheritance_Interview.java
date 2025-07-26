@@ -77,7 +77,7 @@ class AmazonPay extends Payment implements Rewardable, LoyaltyProgram
     }
 }
 
-public class JavaExample_02_InheritanceInJava
+public class JavaExample_02_Inheritance_Interview
 {
 	public static void main(String[] args)
 	{

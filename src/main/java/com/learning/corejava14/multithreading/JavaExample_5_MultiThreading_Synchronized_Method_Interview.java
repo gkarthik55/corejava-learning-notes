@@ -27,7 +27,7 @@ class DocumentPrinter extends Thread
 	String docName;
 	Integer numOfPrints;
 	
-	Printer printObj;
+	Printer printObj; // One Printer Object erathe..
 	
 	DocumentPrinter(String docName, Integer numOfPrints, Printer printer)
 	{
@@ -44,7 +44,7 @@ class DocumentPrinter extends Thread
 }
 
 
-public class JavaExample_5_MultiThreading_Synchronized_Method
+public class JavaExample_5_MultiThreading_Synchronized_Method_Interview
 {
 	public static void main(String args[])
 	{
